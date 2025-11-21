@@ -19,7 +19,7 @@ All dependencies require can be found in the `environment.yml` file and must be 
 
 Install the project environment by running `conda env create --file environment.yml`
 
-Lastly navigate to the Milestone1_XXX_Prediction.ipynb and run all cells. 
+Lastly navigate to the Milestone1_Abalone_Age_Prediction.ipynb and run all cells. 
 
 ## Contributors:
 - Yuting Ji
