@@ -47,18 +47,20 @@ stop: ## stop docker-compose services
 	docker-compose stop
 
 # docker multi architecture build rules (from Claude) -----
+DOCKER_USER=willchh
+IMAGE_NAME=$(shell basename $(CURDIR))
 
 .PHONY: docker-build-push
 docker-build-push: ## Build and push multi-arch image to Docker Hub (amd64 + arm64)
 	docker buildx build \
 		--platform linux/amd64,linux/arm64 \
-		--tag chendaniely/docker-condalock-jupyterlab:latest \
-		--tag chendaniely/docker-condalock-jupyterlab:local-$(shell git rev-parse --short HEAD) \
+		--tag $(DOCKER_USER)/$(IMAGE_NAME):latest \
+		--tag $(DOCKER_USER)/$(IMAGE_NAME):local-$(shell git rev-parse --short HEAD) \
 		--push \
 		.
 
 .PHONY: docker-build-local
 docker-build-local: ## Build single-arch image for local testing (current platform only)
 	docker build \
-		--tag chendaniely/docker-condalock-jupyterlab:local \
+		--tag $(DOCKER_USER)/$(IMAGE_NAME):local \
 		.
