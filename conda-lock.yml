@@ -6039,7 +6039,7 @@ package:
   category: main
   optional: false
 - name: graphviz
-  version: 14.0.4
+  version: 14.0.5
   manager: conda
   platform: osx-64
   dependencies:
@@ -6051,21 +6051,21 @@ package:
     gtk3: '>=3.24.43,<4.0a0'
     gts: '>=0.7.6,<0.8.0a0'
     libcxx: '>=19'
-    libexpat: '>=2.7.1,<3.0a0'
+    libexpat: '>=2.7.3,<3.0a0'
     libgd: '>=2.3.3,<2.4.0a0'
-    libglib: '>=2.86.1,<3.0a0'
+    libglib: '>=2.86.2,<3.0a0'
     librsvg: '>=2.60.0,<3.0a0'
     libwebp-base: '>=1.6.0,<2.0a0'
     libzlib: '>=1.3.1,<2.0a0'
     pango: '>=1.56.4,<2.0a0'
-  url: https://conda.anaconda.org/conda-forge/osx-64/graphviz-14.0.4-hb7c24d8_0.conda
+  url: https://conda.anaconda.org/conda-forge/osx-64/graphviz-14.0.5-had0cc5b_0.conda
   hash:
-    md5: 502863826d366223a6d05f6451f2fe5f
-    sha256: 5ced7102897c1f6f2b87c2b4d21a708f49a23146fe0027bc9ccde8158fef7d94
+    md5: bd964a7fd22fb681fff9258f905347de
+    sha256: 2014fbed0c68ac267379161ce5223e9cbc6272282f73f482f93dd4e3371ad62b
   category: main
   optional: false
 - name: graphviz
-  version: 14.0.4
+  version: 14.0.5
   manager: conda
   platform: osx-arm64
   dependencies:
@@ -6077,40 +6077,40 @@ package:
     gtk3: '>=3.24.43,<4.0a0'
     gts: '>=0.7.6,<0.8.0a0'
     libcxx: '>=19'
-    libexpat: '>=2.7.1,<3.0a0'
+    libexpat: '>=2.7.3,<3.0a0'
     libgd: '>=2.3.3,<2.4.0a0'
-    libglib: '>=2.86.1,<3.0a0'
+    libglib: '>=2.86.2,<3.0a0'
     librsvg: '>=2.60.0,<3.0a0'
     libwebp-base: '>=1.6.0,<2.0a0'
     libzlib: '>=1.3.1,<2.0a0'
     pango: '>=1.56.4,<2.0a0'
-  url: https://conda.anaconda.org/conda-forge/osx-arm64/graphviz-14.0.4-h527465c_0.conda
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/graphviz-14.0.5-ha8f0fc4_0.conda
   hash:
-    md5: e216e2d352e819a775ee352c18733425
-    sha256: ff2b000ec7ae56b4057b433866d82a9be89bdbd33cb3b11838456a41e885e705
+    md5: d4e07aebff35d7ef45b3f28029ff6a4d
+    sha256: 0a5c77335fb28794246a8cf33fde123e06a0127978111742390edaba51611138
   category: main
   optional: false
 - name: graphviz
-  version: 14.0.4
+  version: 14.0.5
   manager: conda
   platform: win-64
   dependencies:
     cairo: '>=1.18.4,<2.0a0'
     getopt-win32: '>=0.1,<0.1.1.0a0'
     gts: '>=0.7.6,<0.8.0a0'
-    libexpat: '>=2.7.1,<3.0a0'
+    libexpat: '>=2.7.3,<3.0a0'
     libgd: '>=2.3.3,<2.4.0a0'
-    libglib: '>=2.86.1,<3.0a0'
+    libglib: '>=2.86.2,<3.0a0'
     libwebp-base: '>=1.6.0,<2.0a0'
     libzlib: '>=1.3.1,<2.0a0'
     pango: '>=1.56.4,<2.0a0'
     ucrt: '>=10.0.20348.0'
     vc: '>=14.3,<15'
     vc14_runtime: '>=14.44.35208'
-  url: https://conda.anaconda.org/conda-forge/win-64/graphviz-14.0.4-ha5e8f4b_0.conda
+  url: https://conda.anaconda.org/conda-forge/win-64/graphviz-14.0.5-h4c50273_0.conda
   hash:
-    md5: ce804dbb79dfbd405bc2145d547e6873
-    sha256: 6de7dcb65aeea3fb4716c052c1467425bbc8bdb360b57809d7a9d71eb27408a5
+    md5: 4d6a9c7b6dd35211f03be7f32fc3ea39
+    sha256: bb44fcb39eabc024fea7c4ea15ff3d7790a4945e1eeb864fb7ba94140fc2ed90
   category: main
   optional: false
 - name: gst-plugins-base
