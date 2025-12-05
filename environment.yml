@@ -11,7 +11,7 @@ dependencies:
   - altair=6.0.0
   - pandera=0.27.0
   - ipykernel=6.29.5
-  - jupyterlab=4.2.5 
+  - jupyterlab=4.2.5
   - pip=24.2
   - pip:
       - deepchecks==0.19.1
