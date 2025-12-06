@@ -50,6 +50,9 @@ test_pred = knn_model.predict(X_test_scaled)
 train_rmse = np.sqrt(mean_squared_error(y_train, train_pred))
 test_rmse = np.sqrt(mean_squared_error(y_test, test_pred))
 
+train_rmse_value = round(float(train_rmse), 2)
+test_rmse_value = round(float(test_rmse), 2)
+
 ```
 
 
@@ -58,7 +61,7 @@ test_rmse = np.sqrt(mean_squared_error(y_test, test_pred))
 
 In this project, we aimed to build a regression model using the k-Nearest Neighbours (k-NN) algorithm to predict the age of an abalone using its physical characteristics and sex. Because determining abalone age traditionally requires cutting the shell and counting internal rings—a destructive and time-consuming process—machine learning methods offer a valuable non-destructive alternative for estimating age from easily measurable features. In the dataset used here, age is represented as Rings + 1.5, where the additional 1.5 years accounts for early developmental stages. For example, an abalone with 10 rings would be approximately 11.5 years old.
 
-Our fitted k-NN regressor (with k = 5) achieved a training RMSE of `{python} round(train_rmse, 2)` and a test RMSE of `{python} round(test_rmse, 2)` rings. This means that on unseen data, the model’s predictions typically deviate from the true age by about `{python} round(test_rmse, 1)` rings. The Figure @fig-knn-actual-pred comparing actual and predicted ring counts shows a generally increasing trend, but also substantial spread—especially among older abalones. This suggests that while k-NN captures the broad relationship between size and age, predicting exact age remains difficult due to biological variability and overlapping physical measurements. Still, the results demonstrate that physical features contain meaningful information about abalone age, and performance could likely improve with hyperparameter tuning or more advanced models.
+Our fitted k-NN regressor (with k = 5) achieved a training RMSE of `{python} train_rmse_value` and a test RMSE of `{python} test_rmse_value` rings. This means that on unseen data, the model’s predictions typically deviate from the true age by about `{python} test_rmse_value` rings. The @fig-knn-actual-pred comparing actual and predicted ring counts shows a generally increasing trend, but also substantial spread—especially among older abalones. This suggests that while k-NN captures the broad relationship between size and age, predicting exact age remains difficult due to biological variability and overlapping physical measurements. Still, the results demonstrate that physical features contain meaningful information about abalone age, and performance could likely improve with hyperparameter tuning or more advanced models.
 
 Estimating abalone age is important for marine biology research, sustainable fisheries management, and conservation efforts, yet the traditional ring-counting method is destructive and impractical at scale. A predictive model provides a non-invasive alternative, enabling age estimation for live animals in the field. However, its accuracy is limited by natural growth variability and nonlinear developmental patterns, particularly in older individuals. As a result, while machine learning can support broader age-structure assessments and population monitoring, it may not fully replace precise biological aging methods in contexts where exact age determination is required.
 
@@ -92,39 +95,39 @@ We used a k-nearest neighbours (k-NN) regressor to predict abalone age from phys
 
 #### 3.3 Model Evaluation
 
-Model performance is assessed, which loads the saved k-NN model and scaler, applies them to the training and test sets, and computes the RMSE for both splits. The script also generates an actual-versus-predicted plot for the test set (Figure @fig-knn-actual-pred). RMSE is an appropriate evaluation metric because the target variable, Rings, is continuous, and the metric penalizes larger errors more severely, making it well suited for age-estimation tasks where extreme mispredictions are particularly undesirabl
+Model performance is assessed, which loads the saved k-NN model and scaler, applies them to the training and test sets, and computes the RMSE for both splits. The script also generates an actual-versus-predicted plot for the test set (@fig-knn-actual-pred). RMSE is an appropriate evaluation metric because the target variable, Rings, is continuous, and the metric penalizes larger errors more severely, making it well suited for age-estimation tasks where extreme mispredictions are particularly undesirabl
 
 ## 4. Results
 
 #### 4.1 Exploratory Data Analysis
-Figure @fig-eda-plot summarizes how each physical measurement relates to the number of rings, which serves as a proxy for abalone age. In general, positive associations are observed across most predictors, indicating that larger and heavier abalones tend to have more rings. The observed patterns are nonlinear, with growth appearing faster in younger abalones and gradually slowing for older ones. This widening spread suggests that abalones with similar sizes can still vary considerably in age. Weight-based variables show particularly strong correlations with age, while height appears to be the least informative due to its very narrow range.
+@fig-eda-plot summarizes how each physical measurement relates to the number of rings, which serves as a proxy for abalone age. In general, positive associations are observed across most predictors, indicating that larger and heavier abalones tend to have more rings. The observed patterns are nonlinear, with growth appearing faster in younger abalones and gradually slowing for older ones. This widening spread suggests that abalones with similar sizes can still vary considerably in age. Weight-based variables show particularly strong correlations with age, while height appears to be the least informative due to its very narrow range.
 
 Across all measurements, the three sex categories overlap substantially, indicating that sex alone does not form clear separations in age patterns. Because of this, sex is unlikely to serve as a strong individual predictor at this stage, although it is still included as a categorical feature for completeness.
 
-![Comparison of the relationships between abalone physical measurements and age (Rings)](../results/eda_scatter_matrix.png){#fig-eda-plot width=60%}
+![Comparison of the relationships between abalone physical measurements and age (Rings)](../results/eda_scatter_matrix.png){#fig-eda-plot width=100%}
 
 #### 4.2 Model Performance
-To evaluate whether physical characteristics can predict age, we trained a k-Nearest Neighbours regression model (k = 5) using scaled predictors. Figure @fig-knn-actual-pred shows the relationship between actual and predicted ring counts on the test set. The dashed line represents perfect prediction. While the model captures the general increasing trend, there is considerable spread, especially for older abalones. This indicates that predictions become less reliable as age increases, which is consistent with the biological variability seen in the EDA.
+To evaluate whether physical characteristics can predict age, we trained a k-Nearest Neighbours regression model (k = 5) using scaled predictors. @fig-knn-actual-pred shows the relationship between actual and predicted ring counts on the test set. The dashed line represents perfect prediction. While the model captures the general increasing trend, there is considerable spread, especially for older abalones. This indicates that predictions become less reliable as age increases, which is consistent with the biological variability seen in the EDA.
 
 ![Actual vs. predicted number of rings for the kNN regression model.](../results/knn_eval_plot.png){#fig-knn-actual-pred width=100%}
 
-Model accuracy is summarized using RMSE, with a training RMSE of `{python} train_rmse` and a test RMSE of `{python} test_rmse`. These values are reported in Table @tbl-rmse, which compares model performance on the training and test sets. Given that abalone age in years is calculated as Rings + 1.5, a test RMSE of `{python} test_rmse` rings implies that the model typically predicts age with an error of roughly `{python} round(test_rmse, 1)` years. This level of accuracy is reasonable for a simple, non-parametric model and suggests that physical features provide useful—but imperfect—information about age.
+Model accuracy is summarized using RMSE, with a training RMSE of `{python} train_rmse_value` and a test RMSE of `{python} test_rmse_value`. These values are reported in @tbl-rmse, which compares model performance on the training and test sets. Given that abalone age in years is calculated as Rings + 1.5, a test RMSE of `{python} test_rmse_value` rings implies that the model typically predicts age with an error of roughly `{python} test_rmse_value` years. This level of accuracy is reasonable for a simple, non-parametric model and suggests that physical features provide useful—but imperfect—information about age.
 
 ```{python}
 #| label: tbl-rmse
 #| tbl-cap: RMSE values for training and test data.
 
-import pandas as pd
-
 rmse_table = pd.DataFrame({
 "Dataset": ["Train", "Test"],
 "RMSE": [round(train_rmse, 3), round(test_rmse, 3)]
 })
+
+rmse_table
 ```
 
 ## 5. Discussion
 
-The EDA and modelling results indicate that abalone age is broadly reflected in its size and weight, although substantial natural variability and nonlinear growth patterns limit prediction accuracy. The widening spread in Figure @fig-knn-actual-pred, along with the moderate RMSE scores, suggests that physical measurements become weaker indicators of age as abalones grow older.
+The EDA and modelling results indicate that abalone age is broadly reflected in its size and weight, although substantial natural variability and nonlinear growth patterns limit prediction accuracy. The widening spread in @fig-knn-actual-pred, along with the moderate RMSE scores, suggests that physical measurements become weaker indicators of age as abalones grow older.
 
 From a fisheries and conservation standpoint, the model is still valuable because it enables non-destructive age estimation from easily collected measurements. This makes it useful for population-level assessments where approximate age ranges are sufficient. However, the prediction error of roughly two rings may be too large for fine-grained applications, such as distinguishing between neighbouring age classes for precise stock assessments.
 
